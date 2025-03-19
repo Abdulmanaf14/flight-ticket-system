@@ -67,7 +67,7 @@ export default function FlightStatus({ flightNumber }: { flightNumber: string })
   
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-md p-4 mt-2">
+      <div className="bg-red-50 border border-red-200 rounded-lg p-4 mt-2 shadow-sm">
         <p className="text-red-600 text-sm">{error}</p>
       </div>
     );
@@ -75,9 +75,9 @@ export default function FlightStatus({ flightNumber }: { flightNumber: string })
   
   if (!statusUpdate) {
     return (
-      <div className="bg-white/5 rounded-md p-4 mt-2 border border-white/10 animate-pulse">
-        <div className="h-4 bg-white/10 rounded w-3/4 mb-2"></div>
-        <div className="h-4 bg-white/10 rounded w-1/2"></div>
+      <div className="bg-gray-50 rounded-lg p-4 mt-2 border border-gray-100 animate-pulse shadow-sm">
+        <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2"></div>
       </div>
     );
   }
@@ -86,19 +86,19 @@ export default function FlightStatus({ flightNumber }: { flightNumber: string })
   const getStatusColor = (status: FlightStatus) => {
     switch (status) {
       case 'on-time':
-        return 'bg-green-100 text-green-800 border-green-200';
+        return 'bg-green-50 text-green-700 border-green-100';
       case 'boarding':
-        return 'bg-blue-100 text-blue-800 border-blue-200';
+        return 'bg-blue-50 text-blue-700 border-blue-100';
       case 'in-air':
-        return 'bg-indigo-100 text-indigo-800 border-indigo-200';
+        return 'bg-indigo-50 text-indigo-700 border-indigo-100';
       case 'landed':
-        return 'bg-purple-100 text-purple-800 border-purple-200';
+        return 'bg-purple-50 text-purple-700 border-purple-100';
       case 'delayed':
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+        return 'bg-amber-50 text-amber-700 border-amber-100';
       case 'cancelled':
-        return 'bg-red-100 text-red-800 border-red-200';
+        return 'bg-red-50 text-red-700 border-red-100';
       default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
+        return 'bg-gray-50 text-gray-700 border-gray-100';
     }
   };
   
@@ -158,20 +158,20 @@ export default function FlightStatus({ flightNumber }: { flightNumber: string })
   });
 
   return (
-    <div className={`border rounded-md p-3 mt-2 ${statusColorClass}`}>
+    <div className={`border rounded-lg p-4 mt-3 ${statusColorClass} shadow-sm transition-all`}>
       <div className="flex items-center">
-        <div className="mr-2">
+        <div className="mr-3">
           {getStatusIcon(statusUpdate.status)}
         </div>
         <div>
-          <div className="font-medium">
+          <div className="font-medium text-lg">
             {statusUpdate.status.charAt(0).toUpperCase() + statusUpdate.status.slice(1)}
             {statusUpdate.delay_minutes && ` • ${statusUpdate.delay_minutes} min delay`}
           </div>
-          <div className="text-sm">
+          <div className="text-sm mt-1">
             {statusUpdate.message}
           </div>
-          <div className="text-xs mt-1">
+          <div className="text-xs mt-2 text-gray-600">
             Last updated: {formattedTime}
             {connected && (
               <span className="inline-flex ml-2 items-center">

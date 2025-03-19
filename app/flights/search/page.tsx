@@ -108,12 +108,12 @@ export default function SearchResultsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="flex justify-center">
-            <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-white rounded-full"></div>
-            <p className="ml-4 text-white">Searching for flights...</p>
+          <div className="flex justify-center items-center">
+            <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-[#4169E1] rounded-full"></div>
+            <p className="ml-4 text-gray-700 font-medium">Searching for flights...</p>
           </div>
         </div>
       </div>
@@ -122,17 +122,20 @@ export default function SearchResultsPage() {
 
   if (!flightResults || (!flightResults.departureFlights.length && !flightResults.returnFlights)) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
         <Navigation />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-8 border border-white/20 text-center">
-            <h2 className="text-2xl font-bold text-white mb-4">No Flights Found</h2>
-            <p className="text-blue-100 mb-6">
+          <div className="bg-white rounded-2xl shadow-lg p-10 text-center">
+            <svg className="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h2 className="text-2xl font-bold text-gray-700 mb-4">No Flights Found</h2>
+            <p className="text-gray-600 mb-6">
               We couldn't find any flights matching your search criteria. Please try different dates or destinations.
             </p>
             <Link
               href="/"
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-md"
+              className="inline-block bg-[#4169E1] hover:bg-blue-600 text-white px-6 py-3 rounded-full font-medium transition-colors shadow-md"
             >
               Back to Search
             </Link>
@@ -148,23 +151,32 @@ export default function SearchResultsPage() {
     : flightResults.returnFlights || [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
       <Navigation />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Page Title */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-[#4169E1]">Available Flights</h1>
+          <p className="text-gray-600 mt-2">Choose from our selection of flights that best suit your needs</p>
+        </div>
+        
         {/* Search Summary */}
-        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-6 mb-6 border border-white/20">
+        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-xl font-bold text-white">{searchDetails.route}</h1>
-              <p className="text-blue-200 text-sm">
+              <h2 className="text-xl font-bold text-gray-800">{searchDetails.route}</h2>
+              <p className="text-gray-600 text-sm">
                 {searchDetails.tripType} • {searchDetails.dates} • {searchDetails.passengers} • {searchDetails.cabinClass}
               </p>
             </div>
             <Link
               href="/"
-              className="mt-3 md:mt-0 inline-block text-blue-300 hover:text-white font-medium transition-colors"
+              className="mt-3 md:mt-0 inline-flex items-center text-[#4169E1] hover:text-blue-600 font-medium transition-colors"
             >
+              <svg className="mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
               Modify Search
             </Link>
           </div>
@@ -172,11 +184,11 @@ export default function SearchResultsPage() {
 
         {/* Trip Tabs (for round trip) */}
         {flightResults.returnFlights && (
-          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl mb-6 overflow-hidden border border-white/20">
+          <div className="bg-white rounded-lg shadow-md mb-6 overflow-hidden">
             <div className="grid grid-cols-2">
               <button
                 className={`py-4 text-center font-medium transition-colors ${
-                  activeTab === 'departure' ? 'bg-blue-500 text-white' : 'bg-white/5 text-blue-100 hover:bg-white/10'
+                  activeTab === 'departure' ? 'bg-[#4169E1] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
                 }`}
                 onClick={() => setActiveTab('departure')}
               >
@@ -184,7 +196,7 @@ export default function SearchResultsPage() {
               </button>
               <button
                 className={`py-4 text-center font-medium transition-colors ${
-                  activeTab === 'return' ? 'bg-blue-500 text-white' : 'bg-white/5 text-blue-100 hover:bg-white/10'
+                  activeTab === 'return' ? 'bg-[#4169E1] text-white' : 'bg-white text-gray-700 hover:bg-gray-50'
                 }`}
                 onClick={() => setActiveTab('return')}
               >
@@ -195,20 +207,20 @@ export default function SearchResultsPage() {
         )}
 
         {/* Sort Options */}
-        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-4 mb-6 border border-white/20">
+        <div className="bg-white rounded-lg shadow-md p-4 mb-6">
           <div className="flex items-center justify-between">
-            <p className="text-white">
+            <p className="text-gray-700">
               {sortFlights(currentFlights).length} flights found
             </p>
             <div className="flex items-center">
-              <label htmlFor="sort" className="text-sm text-blue-200 mr-2">
+              <label htmlFor="sort" className="text-sm text-gray-600 mr-2">
                 Sort by:
               </label>
               <select
                 id="sort"
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="bg-white/10 border border-white/20 rounded px-3 py-1 text-sm text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="bg-white border border-gray-300 rounded-lg px-3 py-1 text-sm text-gray-700 focus:outline-none focus:ring-[#4169E1] focus:border-[#4169E1]"
               >
                 <option value="price">Price: Lowest first</option>
                 <option value="duration">Duration: Shortest first</option>
@@ -222,7 +234,7 @@ export default function SearchResultsPage() {
         {/* Flight List */}
         <div className="space-y-4">
           {sortFlights(currentFlights).map((flight) => (
-            <div key={flight.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 transform transition-all hover:scale-[1.01]">
+            <div key={flight.id} className="bg-white rounded-lg shadow-md transform transition-all hover:shadow-lg hover:scale-[1.01] overflow-hidden">
               <FlightCard 
                 flight={flight} 
                 searchParams={Object.fromEntries(searchParams.entries())}
