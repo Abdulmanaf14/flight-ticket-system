@@ -2,8 +2,11 @@
 
 import Link from 'next/link';
 import FlightSearchForm from './components/FlightSearchForm';
+import AuthModal from './components/AuthModal';
+import Navigation from './components/Navigation';
 import { useEffect, useState } from 'react';
 import { supabase } from './lib/supabase';
+import { useAuth } from './context/AuthContext';
 
 interface Airport {
   code: string;
@@ -13,9 +16,24 @@ interface Airport {
 }
 
 export default function HomePage() {
+  const { user, isLoading } = useAuth();
   const [popularDestinations, setPopularDestinations] = useState<Airport[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showAuth, setShowAuth] = useState(false);
+  
+  // Directly compute authentication state from user object
+  const isAuthenticated = !!user;
 
+  useEffect(() => {
+    // Log authentication state for debugging
+    console.log("HomePage auth state:", isAuthenticated, user?.email);
+    
+    // If user just authenticated, close the auth modal
+    if (user && showAuth) {
+      setShowAuth(false);
+    }
+  }, [user, showAuth, isAuthenticated]);
+  
   useEffect(() => {
     const fetchPopularDestinations = async () => {
       try {
@@ -37,29 +55,58 @@ export default function HomePage() {
     fetchPopularDestinations();
   }, []);
 
+  // Handle auth modal toggle
+  useEffect(() => {
+    const handleToggleAuthModal = () => {
+      // Don't show auth modal if user is already authenticated
+      if (isAuthenticated) {
+        console.log("Toggle auth modal ignored - user already authenticated");
+        return;
+      }
+      
+      setShowAuth(prev => !prev);
+    };
+
+    window.addEventListener('toggle-auth-modal', handleToggleAuthModal);
+    return () => {
+      window.removeEventListener('toggle-auth-modal', handleToggleAuthModal);
+    };
+  }, [isAuthenticated]);
+
+  // Handle escape key to close auth modal
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setShowAuth(false);
+      }
+    };
+
+    if (showAuth) {
+      window.addEventListener('keydown', handleEsc);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, [showAuth]);
+
+  // Prevent scrolling when modal is open
+  useEffect(() => {
+    if (showAuth) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showAuth]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-md border-b border-white/10 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0 flex items-center">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <h1 className="ml-2 text-white text-2xl font-bold">Sky Voyager</h1>
-            </div>
-            <div className="flex space-x-4">
-              <Link href="/auth/login" className="text-white hover:bg-white/10 px-4 py-2 rounded-md transition duration-150">
-                Login
-              </Link>
-              <Link href="/auth/signup" className="bg-white text-blue-700 hover:bg-gray-100 px-4 py-2 rounded-md shadow-md transition duration-150 font-medium">
-                Sign Up
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <div className="relative">
@@ -73,9 +120,40 @@ export default function HomePage() {
             <p className="mt-6 max-w-md mx-auto text-lg text-blue-100 sm:text-xl md:max-w-3xl drop-shadow-md font-light">
               Book your next adventure with Sky Voyager. Discover amazing destinations and the best deals on flights worldwide.
             </p>
+            
+            {!isLoading && isAuthenticated && (
+              <div className="mt-8 flex justify-center">
+                <Link 
+                  href="/bookings" 
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md shadow-lg transition duration-150 font-medium text-lg"
+                >
+                  View My Bookings
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Auth Modal */}
+      {showAuth && !isAuthenticated && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="max-w-md w-full mx-4">
+            <div className="relative">
+              <button 
+                onClick={() => setShowAuth(false)}
+                className="absolute -top-12 right-0 text-white hover:text-gray-200"
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <AuthModal />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Search Form */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-16 relative z-20">

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import FlightCard from '../../components/FlightCard';
 import { searchFlights, Flight } from '../../lib/mockData';
+import Navigation from '../../components/Navigation';
 
 export default function SearchResultsPage() {
   const searchParams = useSearchParams();
@@ -107,13 +108,12 @@ export default function SearchResultsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-100 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-64">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mx-auto"></div>
-              <p className="mt-4 text-gray-700">Searching for flights...</p>
-            </div>
+      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+        <Navigation />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="flex justify-center">
+            <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-white rounded-full"></div>
+            <p className="ml-4 text-white">Searching for flights...</p>
           </div>
         </div>
       </div>
@@ -122,16 +122,17 @@ export default function SearchResultsPage() {
 
   if (!flightResults || (!flightResults.departureFlights.length && !flightResults.returnFlights)) {
     return (
-      <div className="min-h-screen bg-gray-100 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white shadow rounded-lg p-6 text-center">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">No Flights Found</h2>
-            <p className="text-gray-600 mb-6">
+      <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+        <Navigation />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-8 border border-white/20 text-center">
+            <h2 className="text-2xl font-bold text-white mb-4">No Flights Found</h2>
+            <p className="text-blue-100 mb-6">
               We couldn't find any flights matching your search criteria. Please try different dates or destinations.
             </p>
             <Link
               href="/"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition-colors"
+              className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition-colors shadow-md"
             >
               Back to Search
             </Link>
@@ -147,20 +148,22 @@ export default function SearchResultsPage() {
     : flightResults.returnFlights || [];
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-600 to-indigo-900">
+      <Navigation />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Search Summary */}
-        <div className="bg-white shadow rounded-lg p-4 mb-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-6 mb-6 border border-white/20">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-xl font-bold text-gray-800">{searchDetails.route}</h1>
-              <p className="text-gray-600 text-sm">
+              <h1 className="text-xl font-bold text-white">{searchDetails.route}</h1>
+              <p className="text-blue-200 text-sm">
                 {searchDetails.tripType} • {searchDetails.dates} • {searchDetails.passengers} • {searchDetails.cabinClass}
               </p>
             </div>
             <Link
               href="/"
-              className="mt-3 md:mt-0 inline-block text-blue-600 hover:text-blue-800 font-medium"
+              className="mt-3 md:mt-0 inline-block text-blue-300 hover:text-white font-medium transition-colors"
             >
               Modify Search
             </Link>
@@ -169,19 +172,19 @@ export default function SearchResultsPage() {
 
         {/* Trip Tabs (for round trip) */}
         {flightResults.returnFlights && (
-          <div className="bg-white shadow rounded-lg mb-6 overflow-hidden">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl mb-6 overflow-hidden border border-white/20">
             <div className="grid grid-cols-2">
               <button
-                className={`py-4 text-center font-medium ${
-                  activeTab === 'departure' ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                className={`py-4 text-center font-medium transition-colors ${
+                  activeTab === 'departure' ? 'bg-blue-500 text-white' : 'bg-white/5 text-blue-100 hover:bg-white/10'
                 }`}
                 onClick={() => setActiveTab('departure')}
               >
                 Outbound Flight
               </button>
               <button
-                className={`py-4 text-center font-medium ${
-                  activeTab === 'return' ? 'bg-blue-600 text-white' : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                className={`py-4 text-center font-medium transition-colors ${
+                  activeTab === 'return' ? 'bg-blue-500 text-white' : 'bg-white/5 text-blue-100 hover:bg-white/10'
                 }`}
                 onClick={() => setActiveTab('return')}
               >
@@ -192,20 +195,20 @@ export default function SearchResultsPage() {
         )}
 
         {/* Sort Options */}
-        <div className="bg-white shadow rounded-lg p-4 mb-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-4 mb-6 border border-white/20">
           <div className="flex items-center justify-between">
-            <p className="text-gray-700">
+            <p className="text-white">
               {sortFlights(currentFlights).length} flights found
             </p>
             <div className="flex items-center">
-              <label htmlFor="sort" className="text-sm text-gray-700 mr-2">
+              <label htmlFor="sort" className="text-sm text-blue-200 mr-2">
                 Sort by:
               </label>
               <select
                 id="sort"
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
-                className="border border-gray-300 rounded px-3 py-1 text-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="bg-white/10 border border-white/20 rounded px-3 py-1 text-sm text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="price">Price: Lowest first</option>
                 <option value="duration">Duration: Shortest first</option>
@@ -219,11 +222,12 @@ export default function SearchResultsPage() {
         {/* Flight List */}
         <div className="space-y-4">
           {sortFlights(currentFlights).map((flight) => (
-            <FlightCard 
-              key={flight.id} 
-              flight={flight} 
-              searchParams={Object.fromEntries(searchParams.entries())}
-            />
+            <div key={flight.id} className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 transform transition-all hover:scale-[1.01]">
+              <FlightCard 
+                flight={flight} 
+                searchParams={Object.fromEntries(searchParams.entries())}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -1,19 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
 }
 
 export default function AuthForm({ mode }: AuthFormProps) {
+  const { user, refreshSession } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState('');
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,35 +23,59 @@ export default function AuthForm({ mode }: AuthFormProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/auth/${mode}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
+      // Use Supabase directly instead of going through the API
+      if (mode === 'login') {
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        
+        if (signInError) throw signInError;
+        
+        // Refresh the session immediately after login
+        await refreshSession();
+        
+        setSuccess('Successfully signed in!');
+      } else {
+        const { error: signUpError } = await supabase.auth.signUp({
+          email,
+          password,
+        });
+        
+        if (signUpError) throw signUpError;
+        
+        setSuccess('Account created! Please check your email for verification.');
       }
-
-      // Show success message
-      setSuccess(data.message || 'Success!');
       
-      // For login, redirect to flights page after short delay
+      // Close the auth modal after short delay and reload page to refresh auth state
       if (mode === 'login') {
         setTimeout(() => {
-          router.push('/flights');
+          window.dispatchEvent(new CustomEvent('toggle-auth-modal'));
+          console.log("Login successful, closing modal");
         }, 1000);
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+    } catch (err: any) {
+      console.error('Auth error:', err);
+      setError(err.message || 'An error occurred');
     } finally {
       setIsLoading(false);
     }
   };
+
+  // If the user is already logged in, show a message
+  if (user) {
+    return (
+      <div className="text-center">
+        <p className="text-white mb-4">You are already logged in as {user.email}.</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="bg-white text-blue-700 hover:bg-gray-100 px-4 py-2 rounded-md transition duration-150 font-medium"
+        >
+          Refresh Page
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
