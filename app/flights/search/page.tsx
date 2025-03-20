@@ -1,13 +1,13 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import FlightCard from '../../components/FlightCard';
 import { searchFlights, Flight } from '../../lib/mockData';
 import Navigation from '../../components/Navigation';
 
-export default function SearchResultsPage() {
+function SearchResultsContent() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [flightResults, setFlightResults] = useState<{
@@ -244,5 +244,18 @@ export default function SearchResultsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SearchResultsPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">
+      <div className="text-center">
+        <h2 className="text-xl font-semibold mb-4">Loading search results...</h2>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+      </div>
+    </div>}>
+      <SearchResultsContent />
+    </Suspense>
   );
 } 
