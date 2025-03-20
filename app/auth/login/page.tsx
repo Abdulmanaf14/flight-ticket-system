@@ -6,7 +6,7 @@ export default function LoginPage() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-blue-600 to-indigo-900">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-white mb-2">Tally Flights</h1>
+          <h1 className="text-4xl font-extrabold text-white mb-2">THENA Flights</h1>
           <p className="text-blue-200">Sign in to your account</p>
         </div>
         
@@ -16,7 +16,7 @@ export default function LoginPage() {
             
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                New to Tally Flights?{' '}
+                New to THENA Flights?{' '}
                 <Link href="/auth/signup" className="font-medium text-blue-600 hover:text-blue-500">
                   Create an account
                 </Link>

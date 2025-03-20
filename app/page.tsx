@@ -115,7 +115,7 @@ export default function HomePage() {
           {/* Big centered title */}
           <div className="text-center mb-12">
             <h1 className="text-[#4169E1] text-8xl font-bold tracking-wider drop-shadow-md">
-              TALLY FLIGHTS
+              THENA FLIGHTS
             </h1>
           </div>
           
@@ -179,7 +179,7 @@ export default function HomePage() {
 
       {/* Features Section with lighter colors */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="text-3xl font-bold text-[#4169E1] text-center mb-12">Why Choose Tally Flights</h2>
+        <h2 className="text-3xl font-bold text-[#4169E1] text-center mb-12">Why Choose THENA Flights</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
             <div className="bg-[#4169E1] p-3 rounded-full w-14 h-14 mb-6 flex items-center justify-center">
@@ -260,7 +260,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">Tally Flights</h3>
+              <h3 className="text-lg font-semibold mb-4">THENA Flights</h3>
               <p className="text-blue-100 text-sm">Your trusted partner for flights worldwide.</p>
             </div>
             <div>
@@ -292,7 +292,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-blue-300 mt-8 pt-8 text-center text-blue-100 text-sm">
-            <p>© {new Date().getFullYear()} Tally Flights. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} THENA Flights. All rights reserved.</p>
           </div>
         </div>
       </footer>

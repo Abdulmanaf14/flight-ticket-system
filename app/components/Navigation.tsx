@@ -29,7 +29,7 @@ export default function Navigation() {
           <Link href="/" className="flex items-center">
           <img 
               src="/Thena.webp" 
-              alt="Tally Flights Logo"
+              alt="THENA Flights Logo"
               className="h-18 w-auto"
             />
           </Link>

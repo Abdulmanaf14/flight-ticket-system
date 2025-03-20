@@ -15,7 +15,7 @@ export default function AuthModal() {
           </h3>
           <p className="text-gray-600 mt-2">
             {mode === 'login' 
-              ? 'New to Tally Flights? ' 
+              ? 'New to THENA Flights? ' 
               : 'Already have an account?'}{' '}
             {mode === 'login' && (
               <button

@@ -6,7 +6,7 @@ export default function SignupPage() {
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-b from-blue-600 to-indigo-900">
       <div className="w-full max-w-md">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-extrabold text-white mb-2">Tally Flights</h1>
+          <h1 className="text-4xl font-extrabold text-white mb-2">THENA Flights</h1>
           <p className="text-blue-200">Create your account</p>
         </div>
         
