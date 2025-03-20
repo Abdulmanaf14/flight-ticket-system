@@ -169,7 +169,7 @@ export default function FlightSearchForm() {
                 value={formData.origin}
                 onChange={handleInputChange}
                 required
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
                 disabled={loading}
               >
                 <option value="">Select origin city or airport</option>
@@ -194,7 +194,7 @@ export default function FlightSearchForm() {
                 value={formData.destination}
                 onChange={handleInputChange}
                 required
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
                 disabled={loading}
               >
                 <option value="">Select destination city or airport</option>
@@ -224,7 +224,7 @@ export default function FlightSearchForm() {
                 value={formData.departureDate}
                 onChange={handleInputChange}
                 required
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
               />
             </div>
 
@@ -244,7 +244,7 @@ export default function FlightSearchForm() {
                   value={formData.returnDate}
                   onChange={handleInputChange}
                   required
-                  className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                  className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
                 />
               </div>
             )}
@@ -269,7 +269,7 @@ export default function FlightSearchForm() {
                 name="adults"
                 value={formData.adults}
                 onChange={handleNumberChange}
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
               >
                 {[...Array(10)].map((_, i) => (
                   <option key={i} value={i + 1}>
@@ -287,7 +287,7 @@ export default function FlightSearchForm() {
                 name="children"
                 value={formData.children}
                 onChange={handleNumberChange}
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black "
               >
                 {[...Array(10)].map((_, i) => (
                   <option key={i} value={i}>
@@ -305,7 +305,7 @@ export default function FlightSearchForm() {
                 name="infants"
                 value={formData.infants}
                 onChange={handleNumberChange}
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
               >
                 {[...Array(10)].map((_, i) => (
                   <option key={i} value={i}>
@@ -323,7 +323,7 @@ export default function FlightSearchForm() {
                 name="cabinClass"
                 value={formData.cabinClass}
                 onChange={handleInputChange}
-                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1]"
+                className="block w-full py-4 px-4 bg-white border-0 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#4169E1] text-black"
               >
                 <option value="Economy">Economy</option>
                 <option value="Premium Economy">Premium Economy</option>

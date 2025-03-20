@@ -207,14 +207,14 @@ export default function ManageBookingPage() {
                   {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
                 </span>
               </div>
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-gray-900">
                 Booking reference: <span className="font-medium">{booking.id.substring(0, 8).toUpperCase()}</span>
               </p>
             </div>
             <div className="mt-4 sm:mt-0">
               <Link
                 href="/"
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                className="text-sm font-medium text-indigo-900 hover:text-indigo-700"
               >
                 Book another flight
               </Link>
@@ -254,24 +254,32 @@ export default function ManageBookingPage() {
                     </span>
                   )}
                 </div>
-                
+                <style jsx global>{`
+                  .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900,
+                  .text-indigo-500, .text-indigo-600, .text-indigo-700,
+                  .text-amber-500, .text-amber-600, .text-amber-700,
+                  .text-green-500, .text-green-600, .text-green-700, .text-green-800,
+                  .text-red-500, .text-red-600, .text-red-700 {
+                    color: black !important;
+                  }
+                `}</style>
                 <div className="bg-gray-50 rounded-lg p-4 mb-4 shadow-sm">
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4">
                     <div>
-                      <p className="text-sm text-gray-500">Airline</p>
-                      <p className="font-medium">{booking.airline}</p>
+                      <p className="text-sm text-gray-500 text-black">Airline</p>
+                      <p className="font-medium text-black">{booking.airline}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Flight</p>
-                      <p className="font-medium">{booking.flightNumber}</p>
+                      <p className="text-sm text-gray-500 text-black">Flight</p>
+                      <p className="font-medium text-black">{booking.flightNumber}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Date</p>
-                      <p className="font-medium">{formatDate(booking.departureDate)}</p>
+                      <p className="text-sm text-gray-500 text-black">Date</p>
+                      <p className="font-medium text-black">{formatDate(booking.departureDate)}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Class</p>
-                      <p className="font-medium">{booking.cabinClass}</p>
+                      <p className="text-sm text-gray-500 text-black">Class</p>
+                      <p className="font-medium text-black">{booking.cabinClass}</p>
                     </div>
                   </div>
                   

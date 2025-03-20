@@ -220,7 +220,7 @@ function BookingContent() {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -234,7 +234,7 @@ function BookingContent() {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -248,7 +248,7 @@ function BookingContent() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -262,7 +262,7 @@ function BookingContent() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -275,7 +275,7 @@ function BookingContent() {
                         name="dateOfBirth"
                         value={formData.dateOfBirth}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -288,7 +288,7 @@ function BookingContent() {
                         name="passportNumber"
                         value={formData.passportNumber}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -301,7 +301,7 @@ function BookingContent() {
                         name="passportExpiry"
                         value={formData.passportExpiry}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -315,7 +315,7 @@ function BookingContent() {
                         value={formData.specialRequests}
                         onChange={handleInputChange}
                         placeholder="Wheelchair assistance, special meals, etc."
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                   </div>
@@ -335,7 +335,7 @@ function BookingContent() {
                         name="address"
                         value={formData.address}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -348,7 +348,7 @@ function BookingContent() {
                         name="city"
                         value={formData.city}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -361,7 +361,7 @@ function BookingContent() {
                         name="zipCode"
                         value={formData.zipCode}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       />
                     </div>
                     <div>
@@ -373,7 +373,7 @@ function BookingContent() {
                         name="country"
                         value={formData.country}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       >
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
@@ -402,7 +402,7 @@ function BookingContent() {
                         name="paymentMethod"
                         value={formData.paymentMethod}
                         onChange={handleInputChange}
-                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                       >
                         <option value="credit-card">Credit Card</option>
                         <option value="paypal">PayPal</option>
@@ -422,7 +422,7 @@ function BookingContent() {
                             value={formData.cardNumber}
                             onChange={handleInputChange}
                             placeholder="1234 5678 9012 3456"
-                            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                           />
                         </div>
                         <div className="grid grid-cols-2 gap-6">
@@ -436,7 +436,7 @@ function BookingContent() {
                               name="cardHolder"
                               value={formData.cardHolder}
                               onChange={handleInputChange}
-                              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                             />
                           </div>
                           <div className="grid grid-cols-2 gap-4">
@@ -451,7 +451,7 @@ function BookingContent() {
                                 value={formData.expiryDate}
                                 onChange={handleInputChange}
                                 placeholder="MM/YY"
-                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                               />
                             </div>
                             <div>
@@ -465,7 +465,7 @@ function BookingContent() {
                                 value={formData.cvv}
                                 onChange={handleInputChange}
                                 placeholder="123"
-                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
                               />
                             </div>
                           </div>
